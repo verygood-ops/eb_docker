@@ -159,6 +159,16 @@
           ]
         },
         {
+          "name": "TailLogsDockerEvents",
+          "actions": [
+            {
+              "type": "sh",
+              "name": "DockerPS",
+              "value": "echo \"docker events --since '24h' ran at `date`: \" >> /var/log/docker-events-24h.log && docker events --since '24h' >> /var/log/docker-events-24h.log"
+            }
+          ]
+        },
+        {
           "name": "TailLogs",
           "actions": [
             {
@@ -351,7 +361,8 @@
     "app_deploy_dir": "/var/app/current",
     "deploy_image": "aws_beanstalk/current-app",
     "app_deploy_file": "/etc/elasticbeanstalk/.aws_beanstalk.current-container-id",
-    "docker_ps_log": "/var/log/docker-ps.log"
+    "docker_ps_log": "/var/log/docker-ps.log",
+    "docker_events_24h_log": "/var/log/docker-events-24h.log"
   },
   "system": {
     "LogPublicationControl": "false",
